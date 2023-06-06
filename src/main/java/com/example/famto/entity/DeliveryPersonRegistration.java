@@ -9,6 +9,7 @@ import javax.persistence.Table;
 
 import org.springframework.data.geo.Point;
 
+//gihub code check
 
 @Entity
 @Table(name = "delivey_person_registration")
