@@ -9,8 +9,6 @@ import javax.persistence.Table;
 
 import org.springframework.data.geo.Point;
 
-//gihub code check
-
 @Entity
 @Table(name = "delivey_person_registration")
 
@@ -25,6 +23,45 @@ public class DeliveryPersonRegistration {
 	
 	@Column(name = "name")
 	private String name;
+	
+	@Column(name = "first_name")
+	private String firstName;
+	
+	@Column(name = "last_name")
+	private String lastName;
+	
+	@Column(name = "email")
+	private String email;
+	
+	@Column(name = "username")
+	private String userName;
+	
+	@Column(name = "password", unique = true)
+	private String password;
+	
+	@Column(name = "team")
+	private String team;
+	
+	@Column(name = "role")
+	private String role;
+	
+	@Column(name = "type")
+	private String type;
+	
+	@Column(name = "geofence")
+	private String geofence;
+	
+	@Column(name = "transport_type")
+	private String transportType;
+	
+	@Column(name = "transport_description")
+	private String transportDescription;
+	
+	@Column(name = "license_plate")
+	private String licensePlate;
+	
+	@Column(name = "color")
+	private String color;
 	
 	@Column(name = "address")
 	private String address;
@@ -48,6 +85,44 @@ public class DeliveryPersonRegistration {
 	@Column(columnDefinition = "geometry")
 	 private Point geometry;
 	
+	@Column(name = "latitude")
+	private Double latitude;
+	
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+
+	@Column(name = "longitude")
+	private Double longitude;
+	
+//	@Column(columnDefinition = "tags")
+//	 private List<String> tags;
+	
+//	@Column(columnDefinition = "tags")
+//	@ElementCollection
+//	private Collection<String> tags = new ArrayList<String>();
+//	
+//	public Collection<String> getTags() {
+//		return tags;
+//	}
+//
+//	public void setTags(Collection<String> tags) {
+//		this.tags = tags;
+//	}
+
 	public Point getGeometry() {
 		return geometry;
 	}
@@ -74,7 +149,12 @@ public class DeliveryPersonRegistration {
 
 	public DeliveryPersonRegistration(String phoneNumber, String name, String address,
 			String pan, String photo, String aadhaar, String drivingLicense, String status, String vehicleRegistration,
-			String emergencyContact, boolean availability) {
+			String emergencyContact, boolean availability, String color, String licensePlate, 
+			String email, String firstName, String lastName, String geofence, String password, String role,
+			String team, String transportDescription,
+			String transportType, String type, String userName, double latitude, double longitude
+//			Collection<String> tags
+			) {
 		super();
 //		this.deliveryUserId = deliveryUserId;
 		this.phoneNumber = phoneNumber;
@@ -88,6 +168,23 @@ public class DeliveryPersonRegistration {
 		this.vehicleRegistration = vehicleRegistration;
 		this.emergencyContact = emergencyContact;
 		this.availability = availability;
+		this.color = color;
+		this.licensePlate = licensePlate;
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.geofence = geofence;
+		this.password = password;
+		this.role = role;
+		this.team = team;
+		this.transportDescription = transportDescription;
+		this.transportType = transportType;
+		this.type = type;
+		this.userName = userName;
+		this.latitude = latitude;
+		this.longitude = longitude;
+//		this.tags = tags;
+		
 	}
 
 	
@@ -120,6 +217,110 @@ public class DeliveryPersonRegistration {
 
 	public String getAadhaar() {
 		return aadhaar;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getTeam() {
+		return team;
+	}
+
+	public void setTeam(String team) {
+		this.team = team;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getGeofence() {
+		return geofence;
+	}
+
+	public void setGeofence(String geofence) {
+		this.geofence = geofence;
+	}
+
+	public String getTransportType() {
+		return transportType;
+	}
+
+	public void setTransportType(String transportType) {
+		this.transportType = transportType;
+	}
+
+	public String getTransportDescription() {
+		return transportDescription;
+	}
+
+	public void setTransportDescription(String transportDescription) {
+		this.transportDescription = transportDescription;
+	}
+
+	public String getLicensePlate() {
+		return licensePlate;
+	}
+
+	public void setLicensePlate(String licensePlate) {
+		this.licensePlate = licensePlate;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 	public void setAadhaar(String aadhaar) {

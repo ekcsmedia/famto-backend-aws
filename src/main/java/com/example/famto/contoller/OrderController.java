@@ -52,16 +52,45 @@ public class OrderController {
 			.orElseThrow(() -> new ResourceNotFoundException("Order not found with newId :" + orderId));
 		 if (order.getStatus() != null) {
 			 existingOrder.setStatus(order.getStatus());
-
 		 }
 		 if(order.getDeliveryPerson() != null) {
 			 existingOrder.setDeliveryPerson(order.getDeliveryPerson());
-
 		 }
 
 		 if(order.getDeliveryPersonNumber() != null) {
 			 existingOrder.setDeliveryPersonNumber(order.getDeliveryPersonNumber());
-
+		 }
+		 if(order.getDeliveryCharge() != null) {
+			 existingOrder.setDeliveryCharge(order.getDeliveryCharge());;
+		 }
+		 if(order.getDeliveryType() != null) {
+			 existingOrder.setDeliveryType(order.getDeliveryType());
+		 }
+		 if(order.getDropLocation() != null) {
+			 existingOrder.setDropLocation(order.getDropLocation());
+		 }
+		 if(order.getEnroute() != null) {
+			 existingOrder.setEnroute(order.getEnroute());
+		 }
+		 if(order.getName() != null) {
+			 existingOrder.setName(order.getName());
+		 }
+		 if(order.getOrderDetails() != null) {
+			 existingOrder.setOrderDetails(order.getOrderDetails());
+		 }
+		 
+		 if(order.getOrderId() != null) {
+			 existingOrder.setOrderId(order.getOrderId());
+		 }
+		 
+		 if(order.getPhoneNumber() != null) {
+			 existingOrder.setPhoneNumber(order.getPhoneNumber());
+		 }
+		 if(order.getPickupLocation() != null) {
+			 existingOrder.setPickupLocation(order.getPickupLocation());
+		 }
+		 if(order.getVehicleType() != null) {
+			 existingOrder.setVehicleType(order.getVehicleType());
 		 }
 		 return this.orderRepository.save(existingOrder);
 	}

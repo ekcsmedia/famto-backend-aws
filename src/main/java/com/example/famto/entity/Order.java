@@ -1,8 +1,12 @@
 package com.example.famto.entity;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,10 +16,16 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import converter.ItemConverter;
+
+
+
 @Entity
 @Table(name = "orders")
+public class Order implements Serializable{
+	
+    private static final long serialVersionUID = 1L;
 
-public class Order {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,11 +58,33 @@ public class Order {
 	@Column(name = "order_id")
     private String orderId;    
 	
+	public List<OrderDetails> getOrderDetails() {
+		return orderDetails;
+	}
+
+	public void setOrderDetails(List<OrderDetails> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
+	@Convert(converter = ItemConverter.class)
+	@Column(columnDefinition = "json", name = "order_details")
+	private List<OrderDetails> orderDetails = new ArrayList<>();
+	
+
 	@Column(name = "status")
     private String status; 
 	
+	
 	@Column(name = "delivery_person")
     private String deliveryPerson;
+	
+//	private OrderDetails orderDetails;
 	
 	public String getDeliveryPersonNumber() {
 		return deliveryPersonNumber;
@@ -99,7 +131,8 @@ public Order() {
 	} 
 	
 	public Order(int newId,String phoneNumber, String name, String deliveryType, String vehicleType, String pickupLocation,
-	String enroute, String dropLocation, Double deliveryCharge, String orderId, String status) {
+	String enroute, String dropLocation, Double deliveryCharge, String orderId, String status,
+	List<OrderDetails> orderDetails) {
     super();
     this.newId = newId;
     this.phoneNumber = phoneNumber;
@@ -112,6 +145,7 @@ public Order() {
     this.deliveryCharge = deliveryCharge;
     this.orderId = orderId;
     this.status = status;
+    this.orderDetails = orderDetails;
 	}
 
 	public int getNewId() {
